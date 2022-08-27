@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom'
 import { AuthContext } from './contexts/AuthContext';
 import axios from 'axios';
 import Loader from './components/Loader';
+import { baseURL } from './api';
 
 function App() {
 
@@ -23,7 +24,9 @@ function App() {
 
         setpageLoading(true)
 
-        axios.get(`/api/plans/${user.email}`)
+        console.log(baseURL)
+
+        axios.get(`${baseURL}/api/plans/${user.email}`)
             .then(res => {
                 const planIds = res.data.map(a => a._id)
                 dispatch({
@@ -31,7 +34,7 @@ function App() {
                     payload: res.data
                 })
 
-                axios.get(`/api/topics/?q=${planIds}`)
+                axios.get(`${baseURL}/api/topics/?q=${planIds}`)
                     .then(res => {
                         dispatch({
                             type: 'GET_TOPICS',
