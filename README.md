@@ -1,3 +1,6 @@
-# Worklist
+# Ninja Worklist
 A highly optimized and fast to-do app with great features.
-### Deployed [here](https://worklist-plan.netlify.app/)
+This is the client repo of Ninja Worklist.
+
+### 🔗[ Server Repository](https://github.com/Suman-Jaiswal/ninja-worklist-server.git) 
+### 🔗[ Deployed link](https://worklist-plan.netlify.app/) 
