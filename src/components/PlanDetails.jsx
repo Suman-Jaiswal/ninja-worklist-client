@@ -46,7 +46,7 @@ export default function PlanDetails() {
         if (!loading) {
             if (authorised) {
                 const plan = plans.filter(p => p._id === id);
-                console.log(plan)
+
                 if (plan.length > 0) {
                     if (plan[0].collaborators.includes(user.email)) {
                         setAccess(true)
@@ -74,8 +74,6 @@ export default function PlanDetails() {
         const raw = topics.filter(t => t.planID === id)
         setTopicsR(raw)
     }, [id, topics])
-
-    console.log(topicsR)
 
     return (<>
 

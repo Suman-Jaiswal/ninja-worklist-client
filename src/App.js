@@ -24,8 +24,6 @@ function App() {
 
         setpageLoading(true)
 
-        console.log(baseURL)
-
         axios.get(`${baseURL}/api/plans/${user.email}`)
             .then(res => {
                 const planIds = res.data.map(a => a._id)

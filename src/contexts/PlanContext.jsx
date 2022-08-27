@@ -13,8 +13,6 @@ function PlanContextProvider(props) {
 
     const [state, dispatch] = useReducer(planReducer, initialState);
     useEffect(() => {
-        console.log('plans: ', state.plans)
-        console.log('topics: ', state.topics)
     }, [state])
     return (
         <PlanContext.Provider value={{ state, dispatch }}>
