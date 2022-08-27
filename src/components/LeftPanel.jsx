@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
@@ -11,8 +12,11 @@ export default function LeftPanel() {
 
     const { state, } = useContext(PlanContext)
     const { authorised } = useContext(AuthContext).state
-    const { plans } = state
+    const { plans, topics } = state
     const { id } = useParams();
+    const [completedPlans, setCompPlans] = useState([]);
+    const [incompletedPlans, setIncompPlans] = useState([]);
+
 
     useEffect(() => {
         if (window.innerWidth > 767) return
@@ -22,6 +26,25 @@ export default function LeftPanel() {
         !id ? panel.classList.remove('l-clps') :
             panel.classList.add('l-clps');
     })
+
+
+    useEffect(() => {
+
+        var comp = [];
+        var incomp = [];
+        for (let i = 0; i < plans.length; i++) {
+            let tops = topics.filter(t => t.planID === plans[i]._id)
+            let l = 0;
+            for (let j = 0; j < tops.length; j++) {
+                const element = tops[j];
+                if (element.completed) l++;
+            }
+            if (l === tops.length) comp.push(plans[i]);
+            else incomp.push(plans[i]);
+        }
+        setCompPlans(comp)
+        setIncompPlans(incomp)
+    }, [plans, topics])
 
     return (
         <div className="col-12 col-md-3 left-panel" style={{
@@ -37,19 +60,43 @@ export default function LeftPanel() {
                 <>
                     {
                         authorised ?
-                            plans.length > 0 ? plans.map(
-                                (plan, i) => <div className='col-12 p-0'
-                                    key={plan._id}
-                                    style={{
-                                        height: "fit-content"
-                                    }}
-                                >
-                                    <SimpleCard
-                                        sno={i + 1}
-                                        plan={plan}
-                                    />
-                                </div>
-                            ) :
+                            plans.length > 0 ?
+                                <>
+                                    {
+                                        incompletedPlans.map(
+                                            (plan, i) =>
+                                                <div className='col-12 p-0'
+                                                    key={plan._id}
+                                                    style={{
+                                                        height: "fit-content"
+                                                    }}
+                                                >
+                                                    <SimpleCard
+                                                        sno={i + 1}
+                                                        plan={plan}
+                                                    />
+                                                </div>
+                                        )
+                                    }
+                                    {
+                                        completedPlans.map(
+                                            (plan, i) =>
+                                                <div className='col-12 p-0'
+                                                    key={plan._id}
+                                                    style={{
+                                                        height: "fit-content"
+                                                    }}
+                                                >
+                                                    <SimpleCard
+                                                        sno={i + 1}
+                                                        plan={plan}
+                                                    />
+                                                </div>
+                                        )
+                                    }
+
+                                </> :
+
                                 <div className='text-secondary m-auto col-12 p-0 my-5'>
                                     <div className='text-center'
                                         style={{ textAlign: "center", position: "relative", top: 100 }}>
