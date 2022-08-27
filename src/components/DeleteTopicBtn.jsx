@@ -5,6 +5,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Modal } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import axios from 'axios'
+import { baseURL } from '../api'
 
 
 export default function DeleteTopicBtn({ title, id }) {
@@ -19,7 +20,8 @@ export default function DeleteTopicBtn({ title, id }) {
         setOpen(false)
     }
     const handleDelete = () => {
-        axios.delete(`/api/topics/topic/${id}`)
+
+        axios.delete(`${baseURL}/api/topics/topic/${id}`)
             .then(res => {
                 console.log('Topic deleted', res.data)
                 dispatch({ type: 'DELETE_TOPIC', id })

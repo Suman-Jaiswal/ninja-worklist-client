@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
+import { baseURL } from '../api'
 import { PlanContext } from '../contexts/PlanContext'
 
 export default function EditPlanBtn({ plan, setPlan, textClass, text }) {
@@ -31,7 +32,8 @@ export default function EditPlanBtn({ plan, setPlan, textClass, text }) {
         if (title === plan.title && description === plan.description) {
             return
         } else {
-            axios.put(`/api/plans/${plan._id}`, {
+
+            axios.put(`${baseURL}/api/plans/${plan._id}`, {
                 title,
                 description
             })

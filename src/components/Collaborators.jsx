@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { Button, ListGroup, Modal } from 'react-bootstrap'
+import { baseURL } from '../api'
 import { PlanContext } from '../contexts/PlanContext'
 
 export default function Collaborators({ collaborators, plan, setPlan, text }) {
@@ -21,7 +22,7 @@ export default function Collaborators({ collaborators, plan, setPlan, text }) {
         const raw = [...plan.collaborators]
         const newCollaborators = raw.filter(x => x !== email)
 
-        axios.put(`/api/plans/share/${plan._id}`, {
+        axios.put(`${baseURL}/api/plans/share/${plan._id}`, {
             collaborators: newCollaborators
         })
             .then(res => {

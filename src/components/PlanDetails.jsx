@@ -9,6 +9,7 @@ import ShareBtn from './ShareBtn';
 import Collaborators from './Collaborators';
 import EditPlanBtn from './EditPlanBtn';
 import Loader from './Loader';
+import { baseURL } from '../api';
 
 export default function PlanDetails() {
 
@@ -23,7 +24,8 @@ export default function PlanDetails() {
     const [toggle, setToggle] = useState(true)
 
     const handleCheck = (topic) => {
-        axios.put(`/api/topics/${topic._id}`, {
+
+        axios.put(`${baseURL}/api/topics/${topic._id}`, {
             ...topic,
             completed: !topic.completed
         })

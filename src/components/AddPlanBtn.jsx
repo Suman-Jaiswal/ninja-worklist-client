@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { AuthContext } from '../contexts/AuthContext'
+import { baseURL } from '../api'
 
 export default function AddPlanBtn({ variant, color }) {
 
@@ -49,7 +50,7 @@ export default function AddPlanBtn({ variant, color }) {
 
         e.preventDefault()
 
-        axios.post(`/api/plans`, {
+        axios.post(`${baseURL}/api/plans`, {
             title,
             description,
             author: user,
@@ -57,7 +58,7 @@ export default function AddPlanBtn({ variant, color }) {
         })
             .then(res => {
                 dispatch({ type: 'ADD_PLAN', payload: res.data })
-                topics.length > 0 && axios.post(`/api/topics/${res.data._id}`, {
+                topics.length > 0 && axios.post(`${baseURL}/api/topics/${res.data._id}`, {
                     topics: makeTopics(res.data._id)
                 })
                     .then(res => {

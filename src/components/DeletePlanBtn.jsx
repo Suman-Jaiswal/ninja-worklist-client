@@ -5,6 +5,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Modal } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import axios from 'axios'
+import { baseURL } from '../api'
 
 
 export default function DeletePlanBtn({ title, id, textClass }) {
@@ -19,7 +20,8 @@ export default function DeletePlanBtn({ title, id, textClass }) {
         setOpen(false)
     }
     const handleDelete = () => {
-        axios.delete(`/api/plans/${id}`)
+
+        axios.delete(`${baseURL}/api/plans/${id}`)
             .then(res => {
                 console.log('Plan deleted', res.data)
                 dispatch({ type: 'DELETE_PLAN', id })
@@ -27,7 +29,7 @@ export default function DeletePlanBtn({ title, id, textClass }) {
             .catch(err => {
                 console.log(err)
             })
-        axios.delete(`/api/topics/${id}`)
+        axios.delete(`${baseURL}/api/topics/${id}`)
             .then(res => {
                 console.log('Topics deleted', res.data)
             })

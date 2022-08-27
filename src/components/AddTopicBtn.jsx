@@ -4,6 +4,7 @@ import { PlanContext } from '../contexts/PlanContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import { baseURL } from '../api'
 
 export default function AddTopicBtn({ variant, color, planID }) {
 
@@ -36,7 +37,8 @@ export default function AddTopicBtn({ variant, color, planID }) {
     const handleSubmit = (e) => {
         e.preventDefault()
         closeModal()
-        axios.post(`/api/topics/${planID}`, {
+
+        axios.post(`${baseURL}/api/topics/${planID}`, {
             topics
         })
             .then(res => {

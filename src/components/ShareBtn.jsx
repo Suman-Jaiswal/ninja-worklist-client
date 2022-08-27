@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
+import { baseURL } from '../api'
 import { PlanContext } from '../contexts/PlanContext'
 
 export default function ShareBtn({ plan, setPlan, textClass, text }) {
@@ -26,7 +27,7 @@ export default function ShareBtn({ plan, setPlan, textClass, text }) {
             return
         }
 
-        axios.put(`/api/plans/share/${plan._id}`, {
+        axios.put(`${baseURL}/api/plans/share/${plan._id}`, {
             collaborators: [...plan.collaborators, email]
         })
             .then(res => {
