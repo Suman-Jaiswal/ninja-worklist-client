@@ -16,7 +16,7 @@ function Navbar() {
             <div style={{
                 position: 'sticky',
                 top: 0,
-                zIndex: 1,
+                zIndex: 3000,
             }}>
 
                 <nav className="nav-wrapper py-2">
