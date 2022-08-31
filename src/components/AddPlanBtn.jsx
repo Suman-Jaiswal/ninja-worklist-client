@@ -85,10 +85,12 @@ export default function AddPlanBtn({ variant, color }) {
             <Modal show={open} onHide={closeModal} >
 
                 <Form >
-                    <Modal.Header className='text-center' closeButton >
-                        <div className='m-auto bold display-6' >
-                            Create Plan
+                    <Modal.Header className='d-flex justify-content-between'>
+                        <div className='lead' >
+                            <FontAwesomeIcon icon={faPlus} /><span className='ms-1'>Add Plan</span>
                         </div>
+                        <button type="button" style={{ filter: "invert(1)" }} className="btn-close"
+                            onClick={() => setOpen(false)}></button>
                     </Modal.Header>
 
                     <Modal.Body>

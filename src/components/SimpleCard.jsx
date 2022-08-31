@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { PlanContext } from '../contexts/PlanContext';
 import { AuthContext } from '../contexts/AuthContext';
 import EditPlanBtn from './EditPlanBtn';
-import ShareBtn from './ShareBtn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
@@ -26,10 +25,10 @@ export default function SimpleCard({ plan, sno }) {
             width: "100%",
             padding: 0,
             overflow: 'visible',
-            backgroundColor: id === plan._id ? 'rgb(210, 227, 255, 0.2)' : '#282828',
+            backgroundColor: id === plan._id ? '#363636' : '#242424',
             borderBottom: "1px solid #97959559",
             borderLeft: id === plan._id && "4px solid #0d6efd",
-            margin: "auto"
+            margin: "auto",
         },
         bullet: {
             display: 'inline-block',
@@ -72,7 +71,7 @@ export default function SimpleCard({ plan, sno }) {
                 <CardContent className='p-3'>
 
                     <div style={classes.title} className={`d-flex justify-content-between`}>
-                        <div className='text-light'>
+                        <div className='text-light fw-bold' style={{ fontSize: 16 }}>
                             {sno}.  {plan.title}
                         </div>
 
@@ -84,9 +83,9 @@ export default function SimpleCard({ plan, sno }) {
                                         <Dropdown.Toggle className='p-0' size='sm' variant="transparent" id="dropdown-basic">
                                             <FontAwesomeIcon className='mb-1 text-light' icon={faEllipsisH} />
                                         </Dropdown.Toggle>
-                                        <Dropdown.Menu style={{ padding: 0 }}>
-                                            <div className='text-dark'> <EditPlanBtn plan={plan} /></div>
-                                            <div className='text-dark'> <ShareBtn plan={plan} /></div>
+                                        <Dropdown.Menu style={{ bgColor: "#242424" }}>
+                                            <div > <EditPlanBtn plan={plan} text={' Edit'} textClass={'text-light'} /></div>
+                                            <hr className='my-1' />
                                             <div>
                                                 {
                                                     plan.author.email === user.email && <DeletePlanBtn id={plan._id} title={plan.title} />

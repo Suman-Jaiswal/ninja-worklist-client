@@ -9,7 +9,7 @@ export default function Dashboard() {
         <div className='container-fluid' style={{
             minHeight: '90.5vh'
         }}>
-            <div className="row" style={{ overflowX: "hidden" }}>
+            <div className="row" style={{ overflowX: "hidden", width: "100vw" }}>
                 <LeftPanel />
                 <RightPanel />
             </div>

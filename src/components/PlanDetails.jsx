@@ -6,7 +6,6 @@ import AddTopicBtn from './AddTopicBtn';
 import { AuthContext } from '../contexts/AuthContext';
 import { PlanContext } from '../contexts/PlanContext';
 import ShareBtn from './ShareBtn';
-import Collaborators from './Collaborators';
 import EditPlanBtn from './EditPlanBtn';
 import Loader from './Loader';
 import { baseURL } from '../api';
@@ -85,24 +84,27 @@ export default function PlanDetails() {
 
                     access ?
                         <>
-                            <div className="sticky-top text-light pt-2" style={{ backgroundColor: '#282828', zIndex: 0 }}>
-                                <div className=" d-flex flex-column-reverse flex-md-row justify-content-between align-items-center" >
-                                    <div className=" fw-bold text-light  w-100 w-md-auto" style={{ fontSize: '15px' }}>  {plan && plan.title}</div>
-                                    <div className='d-flex gap-3 justify-content-between mb-2 w-100 w-md-auto' >
-                                        <Collaborators text={'text-light'} collaborators={plan.collaborators} plan={plan} setPlan={setPlan} />
-                                        <EditPlanBtn text={'text-light'} textClass={'create-text'} plan={plan} setPlan={setPlan} />
-                                        <ShareBtn text={'text-light'} textClass={'create-text'} setPlan={setPlan} plan={plan} />
-                                        <AddTopicBtn variant={'primary'} planID={id} />
+                            <div className="sticky-top text-light pt-2" style={{ backgroundColor: '#242424', zIndex: 0 }}>
+                                <div className=" d-flex flex-md-row justify-content-between align-items-center" >
+                                    <div className="text-light d-flex">
+                                        <div style={{ fontSize: '18px', marginTop: 2 }} className='fw-bold '> {plan && plan.title}</div>
+                                        <span className='ms-1'>
+                                            <EditPlanBtn text={''} textClass={'text-light'} plan={plan} setPlan={setPlan} />
+                                        </span>
+                                    </div>
+                                    <div className='d-flex justify-content-between mb-1' >
+                                        <ShareBtn text={'text-light'} textClass={'create-text'} collaborators={plan.collaborators} setPlan={setPlan} plan={plan} />
+                                        <span className='ms-2'><AddTopicBtn variant={'primary'} planID={id} /></span>
                                     </div>
                                 </div>
 
-                                <div style={{ borderBottom: '0.5px solid #dddddd' }} className=" pb-1 d-flex text-light justify-content-between" >
+                                <div style={{ borderBottom: '0.5px solid #dddddd' }} className=" pb-2 d-flex text-light justify-content-between" >
                                     <span style={{ width: '70%', fontSize: '13px' }} > {plan && plan.description} </span>
                                     <span style={{ fontSize: '13px' }} className='me-2' > {' Topics: '} {topicsR.length}</span>
                                 </div>
                             </div>
 
-                            <div className=" p-0 my-2" style={{ backgroundColor: '#282828', }}>
+                            <div className=" p-0 my-2" style={{ backgroundColor: '#242424', }}>
 
                                 <div className="inbox">
                                     {

@@ -20,12 +20,11 @@ export default function LeftPanel() {
 
     useEffect(() => {
         if (window.innerWidth > 767) return
-
         const panel = document.querySelector('.left-panel');
         if (!panel) return
         !id ? panel.classList.remove('l-clps') :
             panel.classList.add('l-clps');
-    })
+    }, [id])
 
 
     useEffect(() => {
@@ -52,7 +51,8 @@ export default function LeftPanel() {
             overflowY: "scroll",
             height: "90.5vh",
             position: "absolute",
-            top: 60
+            top: 60,
+            zIndex: 2000
         }}
         // onClick={handleClick}
         >

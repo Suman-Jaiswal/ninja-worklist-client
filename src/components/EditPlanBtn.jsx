@@ -50,20 +50,21 @@ export default function EditPlanBtn({ plan, setPlan, textClass, text }) {
 
     return (
         <>
-            <Button variant={'transparent'} className={text} onClick={openModal} size='sm' aria-labelledby="contained-modal-title-vcenter" >
-                <FontAwesomeIcon icon={faPen} size='sm' /> <span style={{
-                    fontSize: 12
-                }} className={`ms-1 ${textClass}`}>Edit Plan</span>
+            <Button variant={'transparent'} className={textClass} onClick={openModal} size='sm' aria-labelledby="contained-modal-title-vcenter" >
+                <FontAwesomeIcon icon={faPen} size='sm' />
+                <span className='ms-1'>{text}</span>
             </Button>
 
             <Modal show={open} onHide={closeModal} >
 
                 <Form onSubmit={handleSubmit} >
 
-                    <Modal.Header className='text-center' closeButton >
-                        <div className='m-auto bold display-6' >
-                            Edit Plan
+                    <Modal.Header className='d-flex justify-content-between'>
+                        <div className='lead' >
+                            <FontAwesomeIcon icon={faPen} /> <span className='ms-1'>Edit Plan</span>
                         </div>
+                        <button type="button" style={{ filter: "invert(1)" }} className="btn-close"
+                            onClick={() => setOpen(false)}></button>
                     </Modal.Header>
 
                     <Modal.Body>

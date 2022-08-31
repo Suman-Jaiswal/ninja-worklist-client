@@ -63,14 +63,15 @@ export default function AddTopicBtn({ variant, color, planID }) {
 
                 <Form onSubmit={handleSubmit} >
 
-                    <Modal.Header className='text-center' closeButton >
-                        <div className='m-auto bold display-6' >
-                            Add Topics
+                    <Modal.Header className='d-flex justify-content-between'>
+                        <div className='lead' >
+                            <FontAwesomeIcon icon={faPlus} /><span className='ms-1'>Add Topics</span>
                         </div>
+                        <button type="button" style={{ filter: "invert(1)" }} className="btn-close"
+                            onClick={() => setOpen(false)}></button>
                     </Modal.Header>
-
+                    <br />
                     <Modal.Body>
-                        <Form.Label>Titles</Form.Label>
                         <Form.Control className='mb-4' as='textarea' rows={8} onChange={(e) => setInput(e.target.value)}
                             placeholder={'Add topics in each line \n ********example*******\n Topic 1\n Topic 2\n Topic 3\n  ...\n '} />
                     </Modal.Body>

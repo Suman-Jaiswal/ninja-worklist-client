@@ -45,7 +45,7 @@ export default function DeletePlanBtn({ title, id, textClass }) {
             <Button variant={'transparent'} className={'text-danger'} onClick={openModal} size='sm' aria-labelledby="contained-modal-title-vcenter" >
                 <FontAwesomeIcon size='sm' icon={faTrash} /><span style={{
                     fontSize: 12
-                }} className={`ms-1 ${textClass}`}>Delete</span>
+                }} className={`ms-1 ${textClass}`}> Delete</span>
             </Button>
 
 
